@@ -42,7 +42,8 @@ const StudentsTable = () => {
           const studentAge = now.diff(dob, "years");
           studentDetailsArray.push({ ...tempArr[i], age: studentAge });
         }
-        dispatch({ type: "initialize", payload: studentDetailsArray });
+        console.log(response);
+        dispatch({ type: "initialize", payload: { studentDetailsArray } });
       })
       .catch((error) => {
         alert(error);
@@ -53,7 +54,7 @@ const StudentsTable = () => {
 
   return (
     <div>
-      <Table columns={colums} dataSource={students.data} />
+      <Table columns={colums} dataSource={students.studentDetailsArray} />
     </div>
   );
 };

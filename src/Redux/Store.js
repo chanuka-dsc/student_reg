@@ -4,8 +4,8 @@ const studentDetails = [];
 const printReducer = (state = studentDetails, action) => {
   switch (action.type) {
     case "initialize":
-      console.log("initialized:", action.printReducer);
-      return [{ ...state, ...action.payload }];
+      console.log("initialized:", action.payload);
+      return { ...state, ...action.payload };
 
     default:
       return state;
