@@ -1,16 +1,17 @@
 import "./App.css";
 import StudentRegister from "./Components/Comps/Forms/StudentRegister";
+import SubmitForm from "./Components/Misc/SumbitForm";
 import "./Css/Theme.css";
-//import StudentsTable from "./Components/Comps/Tables/StudentsTable";
+import StudentsTable from "./Components/Comps/Tables/StudentsTable";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <StudentsTable /> */}
+        <StudentsTable />
         <StudentRegister />
+        {/* <SubmitForm /> */}
       </header>
-      <body></body>
     </div>
   );
 }
