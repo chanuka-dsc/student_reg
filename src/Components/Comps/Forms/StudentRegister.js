@@ -6,6 +6,7 @@ const StudentRegister = () => {
   const [form] = Form.useForm();
   const students = useSelector((state) => state);
   const dispatch = useDispatch();
+  const tempStudents = students.studentDetailsArray;
 
   const onReset = () => {
     console.log("onReset");
@@ -13,19 +14,17 @@ const StudentRegister = () => {
   };
 
   const onFinish = (values) => {
-    const newStudent = [
-      {
-        key: Math.random(),
-        name: values.name,
-        dob: values.dob.format("DD-M-YYYY"),
-        stream: values.stream,
-        subject_line_1: values.subject_1,
-        subject_line_2: values.subject_1,
-        subject_line_3: values.subject_1,
-      },
-    ];
-
-    dispatch({ type: "add", payload: newStudent });
+    const newStudent = {
+      key: Math.random(),
+      name: values.name,
+      dob: values.dob.format("DD-M-YYYY"),
+      stream: values.stream,
+      subject_line_1: values.subject_1,
+      subject_line_2: values.subject_1,
+      subject_line_3: values.subject_1,
+    };
+    tempStudents.push(newStudent);
+    dispatch({ type: "add", payload: tempStudents });
   };
 
   console.log(students.studentDetailsArray);
