@@ -30,6 +30,10 @@ const StudentsTable = () => {
     },
   ];
 
+  const drawTable = () => {
+    return <Table columns={colums} dataSource={students.studentDetailsArray} />;
+  };
+
   useEffect(() => {
     const studentDetailsArray = [];
 
@@ -50,11 +54,11 @@ const StudentsTable = () => {
       });
   }, []);
 
-  return (
-    <div>
-      <Table columns={colums} dataSource={students.studentDetailsArray} />
-    </div>
-  );
+  useEffect(() => {
+    drawTable();
+  }, [students.studentDetailsArray]);
+
+  return <div>{drawTable()}</div>;
 };
 
 export default StudentsTable;
