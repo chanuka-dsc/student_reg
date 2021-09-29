@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { devToolsEnhancer } from "redux-devtools-extension";
 
 const studentDetails = [];
 const printReducer = (state = studentDetails, action) => {
@@ -15,6 +16,6 @@ const printReducer = (state = studentDetails, action) => {
   }
 };
 
-const store = createStore(printReducer);
+const store = createStore(printReducer, devToolsEnhancer());
 
 export default store;
