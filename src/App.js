@@ -11,6 +11,22 @@ import { useDispatch } from "react-redux";
 function App() {
   const dispatch = useDispatch();
 
+  const studentGrade = (marks) => {
+    if (marks < 35) {
+      return "F";
+    } else if (marks >= 35 && marks < 55) {
+      return "S";
+    } else if (marks >= 55 && marks < 65) {
+      return "C";
+    } else if (marks >= 65 && marks < 75) {
+      return "B";
+    } else if (marks >= 75) {
+      return "A";
+    } else {
+      return "N/A";
+    }
+  };
+
   useEffect(() => {
     const studentDetailsArray = [];
 
@@ -21,7 +37,16 @@ function App() {
         for (let i = 0; i < tempArr.length; i++) {
           const dob = moment(tempArr[i].dob, "dd-mm-yyyy");
           const studentAge = now.diff(dob, "years");
-          studentDetailsArray.push({ ...tempArr[i], age: studentAge });
+          const subOne = studentGrade(tempArr[i].subject_line_1);
+          const subTwo = studentGrade(tempArr[i].subject_line_2);
+          const subThree = studentGrade(tempArr[i].subject_line_3);
+          studentDetailsArray.push({
+            ...tempArr[i],
+            age: studentAge,
+            subject_1_grade: subOne,
+            subject_2_grade: subTwo,
+            subject_3_grade: subThree,
+          });
         }
 
         dispatch({ type: "initialize", payload: studentDetailsArray });

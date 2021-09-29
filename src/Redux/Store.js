@@ -9,7 +9,6 @@ const printReducer = (state = initialState, action) => {
       return { ...state, studentDetails: action.payload };
 
     case "add":
-      console.log(action.payload);
       return {
         ...state,
         studentDetails: [...state.studentDetails, action.payload],

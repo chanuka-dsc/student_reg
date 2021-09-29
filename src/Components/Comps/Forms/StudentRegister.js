@@ -6,6 +6,23 @@ import moment from "moment";
 const StudentRegister = (props) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  let studentsCount = useSelector((state) => state.studentDetails.length);
+
+  const studentGrade = (marks) => {
+    if (marks < 35) {
+      return "F";
+    } else if (marks >= 35 && marks < 55) {
+      return "S";
+    } else if (marks >= 55 && marks < 65) {
+      return "C";
+    } else if (marks >= 65 && marks < 75) {
+      return "B";
+    } else if (marks >= 75) {
+      return "A";
+    } else {
+      return "N/A";
+    }
+  };
 
   const onReset = () => {
     console.log("onReset");
@@ -14,10 +31,13 @@ const StudentRegister = (props) => {
 
   const onFinish = (values) => {
     const now = moment();
-    const dob = values.dob.format("DD-M-YYYY");
+    const dob = values.dob;
     const studentAge = now.diff(dob, "years");
+    const subOne = studentGrade(values.subject_1);
+    const subTwo = studentGrade(values.subject_2);
+    const subThree = studentGrade(values.subject_3);
     const newStudent = {
-      key: Math.random(),
+      key: studentsCount,
       name: values.name,
       dob: values.dob.format("DD-MM-YYYY"),
       age: studentAge,
@@ -25,6 +45,9 @@ const StudentRegister = (props) => {
       subject_line_1: values.subject_1,
       subject_line_2: values.subject_1,
       subject_line_3: values.subject_1,
+      subject_1_grade: subOne,
+      subject_2_grade: subTwo,
+      subject_3_grade: subThree,
     };
 
     dispatch({ type: "add", payload: newStudent });

@@ -24,13 +24,28 @@ const colums = [
     key: "subject_line_1",
   },
   {
+    title: "Subject 1 grade",
+    dataIndex: "subject_1_grade",
+    key: "subject_1_grade",
+  },
+  {
     title: "Subject line 2",
     dataIndex: "subject_line_2",
     key: "subject_line_2",
   },
   {
+    title: "Subject 2 grade",
+    dataIndex: "subject_2_grade",
+    key: "subject_2_grade",
+  },
+  {
     title: "Subject line 3",
     dataIndex: "subject_line_3",
     key: "subject_line_3",
+  },
+  {
+    title: "Subject 3 grade",
+    dataIndex: "subject_3_grade",
+    key: "subject_3_grade",
   },
 ];
