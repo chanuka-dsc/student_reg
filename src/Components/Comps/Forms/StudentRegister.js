@@ -6,7 +6,8 @@ const StudentRegister = (props) => {
   const [form] = Form.useForm();
   const students = useSelector((state) => state);
   const dispatch = useDispatch();
-  const tempStudents = students.studentDetailsArray;
+  let tempStudents = [];
+  tempStudents = students.studentDetailsArray;
 
   const onReset = () => {
     console.log("onReset");
@@ -23,6 +24,7 @@ const StudentRegister = (props) => {
       subject_line_2: values.subject_1,
       subject_line_3: values.subject_1,
     };
+    console.log("new student", newStudent);
     tempStudents.push(newStudent);
     dispatch({ type: "add", payload: tempStudents });
   };
