@@ -1,15 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Table } from "antd";
+import { Table, Input } from "antd";
 
 export default function StudentsTable() {
   const students = useSelector((state) => state.studentDetails);
+  const [disableButton, setDisableButton] = useState(true);
+  const [display, setDsiplay] = useState([]);
 
   const drawTable = () => {
-    return <Table columns={colums} dataSource={students} />;
+    return (
+      <Table
+        columns={colums}
+        dataSource={display.length > 0 ? display : students}
+      />
+    );
   };
 
-  return <div>{drawTable()}</div>;
+  const onSearch = (e) => {
+    const value = e.target.value;
+    if (value.length >= 0) {
+      const searchedStudent = students.filter(
+        (student) =>
+          student.name.toLowerCase().slice(0, value.length) ===
+          value.toLowerCase()
+      );
+      //console.log(...searchedStudent);
+      setDsiplay((display) => [...searchedStudent]);
+      setDisableButton(false);
+      //console.log(display);
+    } else {
+      setDisableButton(true);
+    }
+  };
+  console.log();
+  return (
+    <div>
+      <div>
+        <Input key="search" type="text" onChange={onSearch} />
+        <button disabled={disableButton}>Find student</button>
+      </div>
+      <div>{drawTable()}</div>
+    </div>
+  );
 }
 
 const colums = [
