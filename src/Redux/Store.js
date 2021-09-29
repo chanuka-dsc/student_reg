@@ -1,15 +1,19 @@
 import { createStore } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 
-const studentDetails = [];
-const printReducer = (state = studentDetails, action) => {
+const initialState = { studentDetails: [] };
+
+const printReducer = (state = initialState, action) => {
   switch (action.type) {
     case "initialize":
-      return { ...state, ...action.payload };
+      return { ...state, studentDetails: action.payload };
 
     case "add":
       console.log(action.payload);
-      return { ...state, ...action.payload };
+      return {
+        ...state,
+        studentDetails: [...state.studentDetails, action.payload],
+      };
 
     default:
       return state;
