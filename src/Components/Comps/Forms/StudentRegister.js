@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button, Select, DatePicker, InputNumber } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
-const StudentRegister = () => {
+const StudentRegister = (props) => {
   const [form] = Form.useForm();
   const students = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -26,8 +26,6 @@ const StudentRegister = () => {
     tempStudents.push(newStudent);
     dispatch({ type: "add", payload: tempStudents });
   };
-
-  console.log(students.studentDetailsArray);
 
   return (
     <div className="container">

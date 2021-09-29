@@ -54,11 +54,6 @@ const StudentsTable = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log("this ran");
-    drawTable();
-  }, students.studentDetailsArray);
-
   return <div>{drawTable()}</div>;
 };
 
