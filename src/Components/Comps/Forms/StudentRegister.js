@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Select, DatePicker, InputNumber } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 const StudentRegister = (props) => {
   const [form] = Form.useForm();
@@ -12,10 +13,14 @@ const StudentRegister = (props) => {
   };
 
   const onFinish = (values) => {
+    const now = moment();
+    const dob = values.dob.format("DD-M-YYYY");
+    const studentAge = now.diff(dob, "years");
     const newStudent = {
       key: Math.random(),
       name: values.name,
-      dob: values.dob.format("DD-M-YYYY"),
+      dob: values.dob.format("DD-MM-YYYY"),
+      age: studentAge,
       stream: values.stream,
       subject_line_1: values.subject_1,
       subject_line_2: values.subject_1,
