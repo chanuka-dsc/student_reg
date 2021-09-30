@@ -58,9 +58,17 @@ function App() {
 
   return (
     <div className="App">
-      <Link to="/">Home</Link>
-      <Link to="/add_student">Add New Student</Link>
-      <Link to="/display">Display Students</Link>
+      <ul className="nav">
+        <li className="links">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="links">
+          <Link to="/add_student">Add New Student</Link>
+        </li>
+        <li className="links">
+          <Link to="/display">Display Students</Link>{" "}
+        </li>
+      </ul>
 
       <div className="page">
         <Switch>

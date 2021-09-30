@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Table, Input } from "antd";
+import "./StudentsTable.css";
 
 export default function StudentsTable() {
   const students = useSelector((state) => state.studentDetails);
-  const [disableButton, setDisableButton] = useState(true);
+
   const [display, setDsiplay] = useState([]);
 
   const drawTable = () => {
@@ -26,18 +27,21 @@ export default function StudentsTable() {
       );
       //console.log(...searchedStudent);
       setDsiplay((display) => [...searchedStudent]);
-      setDisableButton(false);
+
       //console.log(display);
     } else {
-      setDisableButton(true);
     }
   };
   console.log();
   return (
-    <div>
-      <div>
-        <Input key="search" type="text" onChange={onSearch} />
-        <button disabled={disableButton}>Find student</button>
+    <div className="table_page">
+      <div className="search_box">
+        <Input
+          placeholder="Enter Student Name to start searching !"
+          key="search"
+          type="text"
+          onChange={onSearch}
+        />
       </div>
       <div>{drawTable()}</div>
     </div>

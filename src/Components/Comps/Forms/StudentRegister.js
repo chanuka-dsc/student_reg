@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Input, Button, Select, DatePicker, InputNumber } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
+import "./StudentRegister.css";
 
 const StudentRegister = (props) => {
   const [form] = Form.useForm();
@@ -59,12 +60,12 @@ const StudentRegister = (props) => {
       <Form form={form} name="register" onFinish={onFinish} scrollToFirstError>
         <div className="row mb-2">
           <div className="col-6">
-            <Form.Item name="name" label="Name">
+            <Form.Item name="name" label="Name" required={true}>
               <Input required={true} />
             </Form.Item>
           </div>
           <div className="col-6">
-            <Form.Item name="dob" label="Date of Birth">
+            <Form.Item name="dob" label="Date of Birth" required={true}>
               <DatePicker />
             </Form.Item>
           </div>
@@ -81,19 +82,31 @@ const StudentRegister = (props) => {
             </Form.Item>
           </div>
           <div className="col-6">
-            <Form.Item name="subject_1" label="Subject line 1 score">
+            <Form.Item
+              name="subject_1"
+              label="Subject line 1 score"
+              required={true}
+            >
               <InputNumber required={true} max={100} min={0} />
             </Form.Item>
           </div>
         </div>
         <div className="row mb-2">
           <div className="col-6">
-            <Form.Item name="subject_2" label="Subject line 2 score">
+            <Form.Item
+              name="subject_2"
+              label="Subject line 2 score"
+              required={true}
+            >
               <InputNumber required={true} max={100} min={0} />
             </Form.Item>
           </div>
           <div className="col-6">
-            <Form.Item name="subject_3" label="Subject line 3 score">
+            <Form.Item
+              name="subject_3"
+              label="Subject line 3 score"
+              required={true}
+            >
               <InputNumber required={true} max={100} min={0} />
             </Form.Item>
           </div>
